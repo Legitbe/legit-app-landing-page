@@ -1553,7 +1553,7 @@ const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
   "gradient": "magenta-blue",
   "animIntensity": "marked",
   "show3DBg": true,
-  "displayFont": "boldonse",
+  "displayFont": "peace-sans",
   "heroVariant": "A"
 } /*EDITMODE-END*/;
 
@@ -1566,6 +1566,7 @@ const GRADIENTS = {
 };
 
 const FONTS = {
+  "peace-sans": '"Peace Sans", "Boldonse", "Big Shoulders Display", "Helvetica Neue", sans-serif',
   "boldonse": '"Boldonse", "Big Shoulders Display", "Helvetica Neue", sans-serif',
   "big-shoulders": '"Big Shoulders Display", "Helvetica Neue", sans-serif',
   "instrument": '"Instrument Serif", "Times New Roman", serif',
@@ -2285,6 +2286,7 @@ function TweaksUI({ tweaks, setTweak }) {
           value={tweaks.displayFont}
           onChange={(v) => setTweak("displayFont", v)}
           options={[
+          { value: "peace-sans", label: "Peace Sans (brand)" },
           { value: "boldonse", label: "Boldonse" },
           { value: "big-shoulders", label: "Big Shoulders" },
           { value: "instrument", label: "Instrument Serif" },
