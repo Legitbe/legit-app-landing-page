@@ -28,7 +28,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Boldonse&family=Instrument+Serif:wght@400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
+@font-face {
+  font-family: "Peace Sans";
+  src: url("/fonts/peace_sans.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+    :root {
     --bg: #FAFAF7;
     --ink: #0A0A0A;
     --ink-2: #1A1A1A;
@@ -38,7 +45,7 @@
     --grad-from: #b80050;
     --grad-to: #3c00cf;
     --gradient: linear-gradient(135deg, var(--grad-from) 0%, var(--grad-to) 100%);
-    --font-display: "Boldonse", "Big Shoulders Display", "Helvetica Neue", sans-serif;
+    --font-display: "Peace Sans", "Boldonse", "Big Shoulders Display", "Helvetica Neue", sans-serif;
     --font-body: "Poppins", system-ui, sans-serif;
     --anim-scale: 1;
   }
