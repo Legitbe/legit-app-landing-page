@@ -94,14 +94,14 @@
   .sphere {
     position: absolute;
     border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.55;
+    filter: blur(72px);
+    opacity: 0.41;
     will-change: transform;
   }
-  .s1 { width: 520px; height: 520px; left: -120px; top: 8vh; background: radial-gradient(circle at 30% 30%, #ff4d97, #b80050 60%, transparent 70%); }
-  .s2 { width: 680px; height: 680px; right: -200px; top: 80vh; background: radial-gradient(circle at 30% 30%, #6a4dff, #3c00cf 60%, transparent 70%); }
-  .s3 { width: 420px; height: 420px; left: 38vw; top: 220vh; background: radial-gradient(circle at 30% 30%, #c0a8ff, #3c00cf 60%, transparent 70%); }
-  .s4 { width: 360px; height: 360px; right: 10vw; top: 360vh; background: radial-gradient(circle at 30% 30%, #ff9ec5, #b80050 60%, transparent 70%); }
+  .s1 { width: 624px; height: 624px; left: -120px; top: 8vh; background: radial-gradient(circle at 30% 30%, #ff4d97, #b80050 60%, transparent 70%); }
+  .s2 { width: 816px; height: 816px; right: -200px; top: 80vh; background: radial-gradient(circle at 30% 30%, #6a4dff, #3c00cf 60%, transparent 70%); }
+  .s3 { width: 504px; height: 504px; left: 38vw; top: 220vh; background: radial-gradient(circle at 30% 30%, #c0a8ff, #3c00cf 60%, transparent 70%); }
+  .s4 { width: 432px; height: 432px; right: 10vw; top: 360vh; background: radial-gradient(circle at 30% 30%, #ff9ec5, #b80050 60%, transparent 70%); }
 
   /* main container above bg */
   #app { position: relative; z-index: 1; }
@@ -201,7 +201,7 @@
   .why-left h2 {
     font-family: var(--font-display);
     font-size: clamp(37px, 4.7vw, 58px);
-    line-height: 1.2;
+    line-height: 0.98;
     letter-spacing: -0.02em;
   }
   .why-right .block {
@@ -237,7 +237,7 @@
   .pillars-head h2 {
     font-family: var(--font-display);
     font-size: clamp(42px, 5vw, 88px);
-    line-height: 1.05;
+    line-height: 0.95;
     letter-spacing: -0.03em;
     max-width: 14ch;
   }
@@ -306,7 +306,7 @@
   .team h2 {
     font-family: var(--font-display);
     font-size: clamp(42px, 5vw, 88px);
-    line-height: 1.05;
+    line-height: 0.95;
     letter-spacing: -0.03em;
     margin-bottom: 24px;
   }
@@ -357,7 +357,7 @@
   .contact h2 {
     font-family: var(--font-display);
     font-size: clamp(36px, 4.2vw, 68px);
-    line-height: 1.08;
+    line-height: 0.95;
     letter-spacing: -0.02em;
   }
   .contact .sub { color: var(--muted); font-size: 17px; line-height: 1.5; margin-top: 24px; max-width: 40ch; }
@@ -423,6 +423,7 @@
   .btn-primary:hover { transform: translateY(-2px); background: var(--ink-2); }
   .btn-primary .arrow { transition: transform 0.3s; }
   .btn-primary:hover .arrow { transform: translateX(4px); }
+  .arrow-mobile { display: none; }
   .btn-secondary {
     background: transparent; color: var(--ink);
     padding: 14px 22px; border-radius: 100px;
@@ -497,8 +498,8 @@
 
   /* Hero B */
   .hero-b {
-    min-height: 90vh;
-    padding: 100px 24px 56px;
+    min-height: 72vh;
+    padding: 80px 24px 45px;
     display: grid; grid-template-columns: 1.1fr 0.9fr;
     gap: 60px;
     align-items: center;
@@ -511,7 +512,7 @@
     line-height: 0.9;
     letter-spacing: -0.045em;
   }
-  .hero-b .sub { margin-top: 32px; font-size: 19px; line-height: 1.5; color: var(--muted); max-width: 50ch; }
+  .hero-b .sub { margin-top: 32px; font-size: 19px; line-height: 1.5; color: var(--muted); max-width: 50ch; background: linear-gradient(135deg, rgba(185,0,81,0.10), rgba(60,0,207,0.10)); border-radius: 12px; padding: 16px 20px; }
   .hero-b .ctas { margin-top: 36px; }
   .hero-b .iphone-wrap { display: flex; justify-content: center; perspective: 1400px; }
   .hero-b .iphone { transform: rotateY(-8deg) rotateX(4deg); }
@@ -572,7 +573,7 @@
   }
   .marquee-track {
     display: flex; gap: 60px; white-space: nowrap;
-    animation: scroll 40s linear infinite;
+    animation: scroll 20s linear infinite;
     font-family: var(--font-display);
     font-size: clamp(40px, 5vw, 72px);
     letter-spacing: -0.02em;
@@ -974,13 +975,22 @@
     .nav .logo img { height: 22px; }
     .nav .cta { padding: 7px 14px; font-size: 12px; }
     footer { flex-direction: column; align-items: flex-start; gap: 24px; }
-    .pillars-head h2, .team h2, .contact h2, .why-left h2 { line-height: 1.05; }
-    h1 { line-height: 1.0 !important; }
-    .marquee-track { animation-duration: 12s; }
-    .sphere { opacity: 0.40; }
+    .pillars-head h2, .team h2, .contact h2, .why-left h2 { line-height: 0.95; }
+    h1 { line-height: 0.92 !important; }
+    .marquee-track { animation-duration: 6s; }
+    .sphere { opacity: 0.27; }
     .sim-mini-range::-webkit-slider-thumb { width: 28px; height: 28px; }
     .sim-mini-range::-moz-range-thumb { width: 28px; height: 28px; }
     .why-left { padding-bottom: 32px; }
+    /* FIX 2: hero-b mobile order */
+    .hero-b { display: flex; flex-direction: column; gap: 20px; }
+    .hero-b > div:first-child { display: contents; }
+    .hero-b > div:first-child .sub { order: 5; }
+    .hero-b .iphone-wrap { order: 4; }
+    /* FIX 4: CTA button sizing */
+    .hero-b .btn-primary { width: auto; align-self: flex-start; }
+    .arrow-desktop { display: none; }
+    .arrow-mobile { display: inline; }
   }
   @media (max-width: 375px) {
     h1, .pillars-head h2, .team h2, .contact h2, .why-left h2 { padding: 0 20px; }
@@ -1716,7 +1726,7 @@ function HeroA() {
       </div>
       <div className="cta-row ctas reveal" style={{ "--d": "400ms" }}>
         <a href={APP_URL} target="_blank" rel="noreferrer" className="btn-primary">
-          Comprendre l'actu dès maintenant <span className="arrow">→</span>
+          Comprendre l'actu dès maintenant <span className="arrow arrow-desktop">→</span><span className="arrow arrow-mobile">↓</span>
         </a>
         <a href={SOCIALS.instagram} target="_blank" rel="noreferrer" className="btn-icon" aria-label="Instagram">
           <InstagramIcon />
@@ -1740,11 +1750,11 @@ function HeroB() {
         <div className="pill-row reveal">
           <span className="pill"><span className="dot"></span> Incubé au Startlab</span>
         </div>
-        <h1 className="reveal" style={{ "--d": "80ms", lineHeight: "1.2" }}>
+        <h1 className="reveal" style={{ "--d": "80ms", lineHeight: "0.98" }}>
           T'as scrollé <br />
           <span className="grad-text" style={{ lineHeight: "1" }}>200 fois</span> <br />
           aujourd'hui.
-          <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, lineHeight: "1.1", fontSize: "clamp(28px, 4.2vw, 56px)", marginTop: "10px", letterSpacing: "-0.02em", fontFamily: "Poppins" }}>
+          <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, lineHeight: "0.92", fontSize: "clamp(28px, 4.2vw, 56px)", marginTop: "10px", letterSpacing: "-0.02em", fontFamily: "Poppins" }}>
             Mais t'as réellement<br />compris quelque chose&nbsp;?
           </span>
         </h1>
@@ -1754,7 +1764,7 @@ function HeroB() {
         </p>
         <div className="cta-row ctas reveal" style={{ "--d": "240ms" }}>
           <a href={APP_URL} target="_blank" rel="noreferrer" className="btn-primary">
-            Comprendre l'actu dès maintenant <span className="arrow">→</span>
+            Comprendre l'actu dès maintenant <span className="arrow arrow-desktop">→</span><span className="arrow arrow-mobile">↓</span>
           </a>
           <a href={SOCIALS.instagram} target="_blank" rel="noreferrer" className="btn-icon" aria-label="Instagram">
             <InstagramIcon />
@@ -1797,7 +1807,7 @@ function Why() {
     <section className="why-grid" id="why">
       <div className="why-left">
         <div className="section-tag reveal">Pourquoi Legit existe</div>
-        <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.25" }}>
+        <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.05" }}>
           L'info est disponible en masse.<br />
           Et <span className="grad-text">personne ne la comprend vraiment</span>.
         </h2>
@@ -1809,7 +1819,7 @@ function Why() {
         </div>
         <div className="block reveal" style={{ "--d": "100ms" }}>
           <span className="num">LE PROBLÈME</span>
-          L'actu en ligne aujourd'hui&nbsp;: surplus d'infos, fake news, contenu clivant, algorithmes opaques. Et si tu veux t'exprimer&nbsp;? Bonne chance...
+          L'actu en ligne aujourd'hui&nbsp;: surplus d'infos, pas concret, fake news, contenu clivant, beaucoup de jargon, algorithmes opaques. Et si tu veux t'exprimer&nbsp;? Bonne chance...
         </div>
       </div>
     </section>);
@@ -2027,34 +2037,33 @@ function Marquee() {
 
 // ---------- Team ----------
 const TEAM = [
-{ name: "Marine", age: 23, role: "Regard éditorial et vulgarisation.", li: "#" },
-{ name: "Louis", age: 25, role: "Vision business et modèle économique.", li: "#" },
-{ name: "Joachim", age: 25, role: "Développement et expérience produit.", li: "#" },
-{ name: "Camille", age: 24, role: "Sensibilité narrative et accessibilité.", li: "#" }];
+{ name: "Marine", profession: "Journaliste", role: "Regard éditorial et vulgarisation.", li: "https://www.linkedin.com/in/marine-loute-624251bb/" },
+{ name: "Louis", profession: "Business Engineer", role: "Vision business et modèle économique.", li: "https://www.linkedin.com/in/louis-van-ingelgem-51b85a253/" },
+{ name: "Joachim", profession: "Juriste", role: "Développement et expérience produit.", li: "https://www.linkedin.com/in/joachim-brabant/" },
+{ name: "Camille", profession: "Journaliste", role: "Sensibilité narrative et accessibilité.", li: "https://www.linkedin.com/in/camille-huyskens-0457862b4/" }];
 
 
 function Team() {
   return (
     <section className="team" id="team">
       <div className="section-tag reveal">Qui sommes-nous</div>
-      <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.25" }}>
-        Quatre <span className="grad-text" style={{ lineHeight: "1.25" }}>jeunes</span>.<br />
+      <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.05" }}>
+        Quatre <span className="grad-text" style={{ lineHeight: "1.05" }}>jeunes</span>.<br />
         Une plateforme.
       </h2>
-      <p className="intro reveal" style={{ "--d": "160ms", color: "rgb(37, 37, 37)" }}>La news est partout, mais trop souvent abstraite. Nous créons la plateforme que nous aurions voulu utiliser.
-
-
-      </p>
+      <div className="pill-row reveal" style={{ "--d": "120ms" }}>
+        <span className="pill"><span className="dot"></span> Incubé au Startlab.Brussels</span>
+      </div>
       <div className="team-grid">
         {TEAM.map((p, i) =>
         <a key={p.name} href={p.li} target="_blank" rel="noreferrer" className="person reveal" style={{ "--d": `${i * 80}ms` }}>
             <div>
               <div className="name">{p.name}</div>
-              <div className="age">{p.age} ANS</div>
+              <div className="age">{p.profession}</div>
             </div>
             <div className="role">{p.role}</div>
             <div className="li">
-              <span>LinkedIn</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               <span>↗</span>
             </div>
           </a>
