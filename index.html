@@ -460,7 +460,7 @@
     text-align: center;
     position: relative;
   }
-  .hero-a .pill-row { margin-bottom: 32px; }
+  .hero-a .pill-row { margin-bottom: 32px; order: 3; }
   .hero-a h1 {
     font-family: var(--font-display);
     font-size: clamp(56px, 10vw, 180px);
@@ -468,6 +468,7 @@
     letter-spacing: -0.045em;
     max-width: 16ch;
     margin: 0 auto;
+    order: 1;
   }
   .hero-a .h1-q { display: block; }
   .hero-a .sub {
@@ -477,18 +478,21 @@
     color: var(--muted);
     max-width: 64ch;
     margin-left: auto; margin-right: auto;
+    order: 5;
   }
   .hero-a .iphone-wrap {
     margin-top: 40px;
     perspective: 1400px;
     position: relative;
+    order: 4;
   }
-  .hero-a .ctas { margin-top: 28px; justify-content: center; }
+  .hero-a .ctas { margin-top: 28px; justify-content: center; order: 2; }
   .hero-a .marquee-anchor {
     margin-top: 28px;
     font-family: "Space Grotesk", monospace; font-size: 12px;
     letter-spacing: 0.2em; color: var(--muted);
     display: flex; align-items: center; gap: 12px;
+    order: 6;
   }
   .hero-a .marquee-anchor .line { width: 60px; height: 1px; background: var(--line-strong); }
 
