@@ -1922,8 +1922,7 @@ function Contact() {
       if (!sb) throw new Error("Service indisponible.");
       const insertPromise = sb.from('contacts').insert({
         name: name.slice(0, 100),
-        email: email.slice(0, 254),
-        org: org.slice(0, 200),
+        email: email.slice(0, 200),
         message: message.slice(0, 2000),
       });
       const timeoutPromise = new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 10000));
