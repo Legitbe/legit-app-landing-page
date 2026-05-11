@@ -100,7 +100,7 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(86px);
-    opacity: 0.31;
+    opacity: 0.22;
     will-change: transform;
   }
   .s1 { width: 750px; height: 750px; left: -160px; top: 6vh; background: radial-gradient(circle at 30% 30%, #ff4d97, #b80050 60%, transparent 70%); }
@@ -597,45 +597,86 @@
   }
   .hero-a .marquee-anchor .line { width: 60px; height: 1px; background: var(--line-strong); }
 
-  /* Hero B */
+  /* Hero B — desktop grid 2 cols (text + iPhone), full-width lede below */
   .hero-b {
     min-height: 58vh;
     padding: 64px 60px 36px;
-    display: flex; flex-direction: column;
-    gap: 22px;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    column-gap: 60px;
+    row-gap: 24px;
+    align-items: center;
     position: relative;
     max-width: 100%;
     overflow-x: hidden;
   }
-  .hero-b h1, .hero-b .sub, .hero-b .cta-row, .hero-b .pill-row { max-width: 100%; }
-  .hero-b .pill-row { margin-bottom: 0; }
-  .hero-b h1 {
+  .hero-b-text {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex; flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+  }
+  .hero-b-text h1, .hero-b-text .cta-row, .hero-b-text .pill-row { max-width: 100%; }
+  .hero-b-text .pill-row { margin-bottom: 0; order: 3; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .hero-b-text .pill-row .btn-icon { width: 40px; height: 40px; }
+  .hero-b-text h1 {
+    order: 1;
     font-family: var(--font-display);
-    font-size: clamp(48px, 8vw, 140px);
+    font-size: clamp(44px, 6vw, 96px);
     line-height: 0.85;
     letter-spacing: -0.045em;
   }
-  .hero-b .sub { margin-top: 0; font-size: 19px; line-height: 1.5; color: var(--muted); max-width: 50ch; background: linear-gradient(135deg, rgba(185,0,81,0.12), rgba(60,0,207,0.12)); border-radius: 12px; padding: 16px 20px; }
-  .hero-b .ctas { margin-top: 0; }
-  .hero-b .iphone-wrap { display: flex; justify-content: center; perspective: 1400px; }
+  .hero-b-text .cta-row { order: 2; margin-top: 0; }
+  .hero-b .iphone-wrap {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex; justify-content: center;
+    perspective: 1400px;
+  }
   .hero-b .iphone { transform: rotateY(-8deg) rotateX(4deg); }
+  .hero-b .hero-lede {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-width: 900px;
+    margin: 24px auto 0;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+    padding: 56px 20px 16px;
+    background: transparent;
+    letter-spacing: -0.01em;
+  }
   .hero-b .side-meta {
     position: absolute; right: 60px; top: 120px;
     font-family: "Space Grotesk", monospace; font-size: 11px; letter-spacing: 0.2em;
     color: var(--muted);
     writing-mode: vertical-rl; transform: rotate(180deg);
   }
-  .hero-b > div:first-child { display: contents; }
-  .hero-b > div:first-child h1 { order: 1; }
-  .hero-b > div:first-child .cta-row { order: 2; }
-  .hero-b > div:first-child .pill-row { order: 3; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .hero-b > div:first-child .pill-row .btn-icon { width: 40px; height: 40px; }
-  .hero-b .iphone-wrap { order: 4; align-self: center; }
-  .hero-b > div:first-child .sub { order: 5; }
-  .hero-b .side-meta { order: 99; }
-  @media (max-width: 1000px) {
-    .hero-b { padding: 80px 20px 40px; gap: 20px; }
+  @media (max-width: 900px) {
+    .hero-b {
+      grid-template-columns: 1fr;
+      padding: 80px 20px 40px;
+      column-gap: 0;
+      row-gap: 18px;
+    }
+    .hero-b-text {
+      grid-column: 1;
+      grid-row: auto;
+      gap: 18px;
+    }
+    .hero-b-text h1 { font-size: clamp(40px, 12vw, 72px); }
+    .hero-b .iphone-wrap { grid-column: 1; grid-row: auto; }
+    .hero-b .hero-lede {
+      grid-column: 1;
+      grid-row: auto;
+      padding: 32px 8px 8px;
+      margin: 0 auto;
+      font-size: clamp(20px, 4.6vw, 24px);
+    }
     .hero-b .side-meta { display: none; }
     .hero-a { padding: 96px 20px 48px; min-height: auto; }
     .iphone { width: 280px; }
@@ -1094,16 +1135,14 @@
     .pillars-head h2, .team h2, .contact h2, .why-head h2 { line-height: 0.88; }
     h1 { line-height: 0.85 !important; }
     .marquee-track { animation-duration: 3s; }
-    .sphere { opacity: 0.20; }
+    .sphere { opacity: 0.17; }
     .sim-mini-range::-webkit-slider-thumb { width: 28px; height: 28px; }
     .sim-mini-range::-moz-range-thumb { width: 28px; height: 28px; }
     .why-head { padding-bottom: 8px; }
-    /* FIX 2: hero-b mobile (same order as desktop, single column) */
-    .hero-b { gap: 18px; padding: 80px 20px 36px; }
-    /* FIX 4: CTA button + RS row on mobile */
+    .hero-b { row-gap: 18px; padding: 80px 20px 36px; }
     .hero-b .btn-primary { width: auto; align-self: flex-start; padding: 14px 20px; }
-    .hero-b > div:first-child .pill-row { flex-wrap: nowrap; gap: 10px; }
-    .hero-b > div:first-child .pill-row .btn-icon { width: 38px; height: 38px; }
+    .hero-b-text .pill-row { flex-wrap: nowrap; gap: 10px; }
+    .hero-b-text .pill-row .btn-icon { width: 38px; height: 38px; }
     .arrow-desktop { display: none; }
     .arrow-mobile { display: inline; }
   }
@@ -1820,7 +1859,7 @@ function Nav() {
       </a>
       <a href="#why" className="nav-link">Pourquoi</a>
       <a href="#how" className="nav-link">Comment</a>
-      <a href="#team" className="nav-link">Équipe</a>
+      <a href="#team" className="nav-link">Qui sommes-nous</a>
       <a href="#contact" className="cta">Nous contacter</a>
     </header>);
 
@@ -1868,7 +1907,7 @@ function HeroA() {
 function HeroB() {
   return (
     <section className="hero-b" data-screen-label="Hero B — split editorial">
-      <div>
+      <div className="hero-b-text">
         <div className="pill-row reveal">
           <a href={SOCIALS.instagram} target="_blank" rel="noreferrer" className="btn-icon" aria-label="Instagram">
             <InstagramIcon />
@@ -1886,10 +1925,6 @@ function HeroB() {
             Mais t'as réellement<br />compris quelque chose&nbsp;?
           </span>
         </h1>
-        <p className="sub reveal" style={{ "--d": "160ms", fontWeight: "500", color: "rgb(57, 57, 57)" }}>Legit transforme l'actu en quelque chose d'utile : ce que les mesures changent pour ta vie, ce que pensent les gens comme toi, et un moyen d'envoyer un vrai signal aux décideurs.
-
-
-        </p>
         <div className="cta-row ctas reveal" style={{ "--d": "240ms" }}>
           <a href={APP_URL} target="_blank" rel="noreferrer" className="btn-primary">
             Comprendre l'actu dès maintenant <span className="arrow arrow-desktop">→</span><span className="arrow arrow-mobile">↓</span>
@@ -1899,6 +1934,9 @@ function HeroB() {
       <div className="iphone-wrap reveal" style={{ "--d": "200ms" }}>
         <Iphone url={APP_URL} />
       </div>
+      <p className="hero-lede reveal" style={{ "--d": "300ms" }}>
+        Legit, c'est ce que l'actu belge implique concrètement pour toi. Des <span className="grad-text">décryptages clairs</span>, un <span className="grad-text">simulateur d'impact personnel</span>, et <span className="grad-text">ton avis qui pèse dans le débat public</span>.
+      </p>
       <div className="side-meta">LEGIT — V.2026 · BRUSSELS</div>
     </section>);
 }
@@ -1937,11 +1975,11 @@ function Why() {
       </div>
         <div className="why-block reveal" style={{ "--d": "200ms" }}>
           <span className="num">SUR LE TERRAIN</span>
-          <h3 className="block-title">Même constat, en face-à-face.</h3>
+          <h3 className="block-title">Même constat, sur le terrain.</h3>
           <p className="lede">Tonnelles pop-up à Bruxelles et Louvain-la-Neuve, micro-trottoirs, interviews. 100+ jeunes nous ont dit la même chose.</p>
           <blockquote className="why-quote">
             «&nbsp;L'actualité est compliquée et on ne comprend pas les implications pour nous.&nbsp;»
-            <span className="why-quote-attr">— Recueilli en tonnelle, mars 2026</span>
+            <span className="why-quote-attr">— Anaïs, tonnelle débat mars 2026</span>
           </blockquote>
           <div className="mosaic mosaic-left-big">
             <figure className="m-1">
@@ -2086,6 +2124,7 @@ function Pillars() {
 
   return (
     <section className="pillars" id="how">
+      <div className="section-tag reveal">Notre vision</div>
       <div className="pillars-head reveal">
         <h2 style={{ lineHeight: "1.05" }}>
           Comprendre. <br />
