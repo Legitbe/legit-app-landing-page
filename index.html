@@ -27,6 +27,11 @@
 <meta name="twitter:title" content="Legit — Comprends l'actu qui te concerne">
 <meta name="twitter:description" content="Des carrousels clairs, un simulateur d'impact, et ton avis qui compte. L'info belge enfin accessible.">
 <meta name="twitter:image" content="https://legit-app.be/og-image.png">
+<link rel="preload" as="image"
+      imagesrcset="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp 1200w"
+      imagesizes="(max-width: 700px) 100vw, 33vw"
+      fetchpriority="low">
+<link rel="preconnect" href="https://obgtzkmugkuoqzjjsvqs.supabase.co" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Boldonse&family=Instrument+Serif:wght@400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -214,6 +219,38 @@
   }
   .why-right .block + .block { padding-top: 32px; border-top: 1px solid var(--line); }
   .why-right .block .num { font-family: "Space Grotesk", monospace; font-size: 13px; color: var(--muted); display: block; margin-bottom: 16px; letter-spacing: 0.1em; }
+  .why-right .block .block-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 2.4vw, 34px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+  }
+  .terrain-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .terrain-photos figure {
+    margin: 0;
+    aspect-ratio: 3 / 2;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ebebe5;
+  }
+  .terrain-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 700px) {
+    .terrain-photos { grid-template-columns: 1fr; gap: 12px; }
+    .why-right .block .block-title { font-size: 22px; }
+  }
   .stabilo {
     background: linear-gradient(90deg, var(--grad-from), var(--grad-to));
     color: #fff;
@@ -499,12 +536,15 @@
   /* Hero B */
   .hero-b {
     min-height: 58vh;
-    padding: 64px 24px 36px;
+    padding: 64px 60px 36px;
     display: flex; flex-direction: column;
     gap: 22px;
     align-items: stretch;
     position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
   }
+  .hero-b h1, .hero-b .sub, .hero-b .cta-row, .hero-b .pill-row { max-width: 100%; }
   .hero-b .pill-row { margin-bottom: 0; }
   .hero-b h1 {
     font-family: var(--font-display);
@@ -896,11 +936,12 @@
     border-color: #1a1a1a;
     box-shadow: 0 0 0 2px rgba(26,26,26,0.12);
   }
-  .baro-mini-emoji[data-baro-idx="0"] { color: #d92626; }
-  .baro-mini-emoji[data-baro-idx="1"] { color: #ea7c1f; }
-  .baro-mini-emoji[data-baro-idx="2"] { color: #c9a40a; }
-  .baro-mini-emoji[data-baro-idx="3"] { color: #4caf50; }
-  .baro-mini-emoji[data-baro-idx="4"] { color: #1f8f3a; }
+  .baro-mini-emoji[data-baro-idx="0"] { color: #B90051; }
+  .baro-mini-emoji[data-baro-idx="1"] { color: #9C0173; }
+  .baro-mini-emoji[data-baro-idx="2"] { color: #7B0286; }
+  .baro-mini-emoji[data-baro-idx="3"] { color: #5A2398; }
+  .baro-mini-emoji[data-baro-idx="4"] { color: #3C00CF; }
+  .baro-mini-question { font-size: 11.5px; font-weight: 500; color: #6b6b66; margin-bottom: 4px; }
 
   .baro-mini-bar {
     display: grid;
@@ -912,11 +953,19 @@
   .baro-mini-seg {
     height: 8px;
   }
-  .baro-mini-seg.s0 { background: #d92626; border-radius: 999px 0 0 999px; }
-  .baro-mini-seg.s1 { background: #ea7c1f; }
-  .baro-mini-seg.s2 { background: #f1c40f; }
-  .baro-mini-seg.s3 { background: #88cf88; }
-  .baro-mini-seg.s4 { background: #1f8f3a; border-radius: 0 999px 999px 0; }
+  .baro-mini-seg.s0 { background: #B90051; border-radius: 999px 0 0 999px; }
+  .baro-mini-seg.s1 { background: #9C0173; }
+  .baro-mini-seg.s2 { background: #7B0286; }
+  .baro-mini-seg.s3 { background: #5A2398; }
+  .baro-mini-seg.s4 { background: #3C00CF; border-radius: 0 999px 999px 0; }
+  .sim-mini-panel { display: flex; flex-direction: column; gap: 8px; }
+  .sim-mini-panel[hidden] { display: none; }
+  .sim-mini-be-budget { font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px); font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: #059669; }
+  .sim-mini-be-budget-cap { font-size: 11.5px; color: #6b6b66; margin-top: -4px; }
+  .sim-mini-be-redist { font-size: 12.5px; color: #2a2a2a; line-height: 1.4; margin-top: 2px; }
+  .sim-mini-be-redist-strong { color: #059669; font-weight: 500; }
+  .sim-mini-be-angles { font-size: 11.5px; color: #6b6b66; line-height: 1.4; padding-top: 6px; border-top: 1px solid rgba(0,0,0,0.05); }
+  .sim-mini-be-angles-title { font-family: "Space Grotesk", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8a85; margin-bottom: 4px; }
 
   .baro-mini-pcts {
     display: grid;
@@ -1571,7 +1620,7 @@ Object.assign(window, {
 /* ─── Legit landing app ─── */
 const { useState, useEffect, useRef, useMemo } = React;
 
-const APP_URL = "https://legit-app3.lovable.app";
+const APP_URL = "https://legit-app3.vercel.app/";
 const SOCIALS = {
   instagram: "https://www.instagram.com/_legit_be/",
   tiktok: "https://www.tiktok.com/@legit.be",
@@ -1817,11 +1866,73 @@ function Why() {
       <div className="why-right">
         <div className="block reveal">
           <span className="num">LE CONSTAT</span>
-          En février 2026, ça faisait <span className="stabilo">600 jours sans gouvernement</span> à Bruxelles. Énormément d'articles et d'actu couvraient cette crise. Et pourtant, <span className="stabilo">impossible de comprendre ce que ça implique</span> concrètement pour nous et pour le pays.
+          En février 2026, ça faisait <span className="stabilo">600 jours sans gouvernement</span> à Bruxelles, beaucoup de bruit médiatique, <span className="stabilo">impossible de comprendre ce que ça implique</span> concrètement.
         </div>
         <div className="block reveal" style={{ "--d": "100ms" }}>
           <span className="num">LE PROBLÈME</span>
           L'actu en ligne aujourd'hui&nbsp;: surplus d'infos, pas concret, fake news, contenu clivant, beaucoup de jargon, algorithmes opaques. Et si tu veux t'exprimer&nbsp;? Bonne chance...
+        </div>
+        <div className="block reveal" style={{ "--d": "200ms" }}>
+          <span className="num">SUR LE TERRAIN</span>
+          <h3 className="block-title">Même constat, sur le terrain.</h3>
+          On a installé des tonnelles pop-up à Bruxelles et Louvain-la-Neuve, fait des micro-trottoirs et des interviews. 100+ jeunes nous ont dit la même chose&nbsp;: <span className="stabilo">«&nbsp;L'actualité est compliquée et on ne comprend pas les implications pour nous.&nbsp;»</span>
+          <div className="terrain-photos">
+            <figure>
+              <img
+                src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp"
+                srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp 1200w"
+                sizes="(max-width: 700px) 100vw, 33vw"
+                alt="Tonnelle citoyenne Legit à Bruxelles"
+                loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img
+                src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(1200%20px).webp"
+                srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(1200%20px).webp 1200w"
+                sizes="(max-width: 700px) 100vw, 33vw"
+                alt="Micro-trottoirs et interviews avec des jeunes"
+                loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img
+                src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(1200%20px).webp"
+                srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(1200%20px).webp 1200w"
+                sizes="(max-width: 700px) 100vw, 33vw"
+                alt="Tonnelle citoyenne Legit à Louvain-la-Neuve"
+                loading="lazy" decoding="async" />
+            </figure>
+          </div>
+        </div>
+        <div className="block reveal" style={{ "--d": "300ms" }}>
+          <span className="num">CE QU'ON A APPRIS</span>
+          <h3 className="block-title">L'info concrète change tout.</h3>
+          En 20 minutes, des jeunes qui pensaient n'avoir aucun avis ont produit des propositions argumentées. C'est exactement ce que Legit veut généraliser.
+          <div className="terrain-photos">
+            <figure>
+              <img
+                src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(1200%20px).webp"
+                srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(1200%20px).webp 1200w"
+                sizes="(max-width: 700px) 100vw, 33vw"
+                alt="Atelier participatif avec des jeunes citoyens"
+                loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img
+                src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(1200%20px).webp"
+                srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(1200%20px).webp 1200w"
+                sizes="(max-width: 700px) 100vw, 33vw"
+                alt="Propositions argumentées issues des ateliers Legit"
+                loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img
+                src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(1200%20px).webp"
+                srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(1200%20px).webp 1200w"
+                sizes="(max-width: 700px) 100vw, 33vw"
+                alt="Jeunes citoyens engagés autour de la tonnelle Legit"
+                loading="lazy" decoding="async" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>);
@@ -1833,28 +1944,19 @@ function Pillars() {
   // FIX 4 + 5 — interactivity for the mini-simulator and mini-barometer.
   // One delegated listener per widget. No throttling, no rAF, direct textContent updates.
   useEffect(() => {
-    // ── Simulator ──
+    // Simulator — reproduces legit-app3 carbon-tax config (coef 0.032, direction negative).
     const simRange = document.querySelector("[data-sim-range]");
     const simValue = document.querySelector("[data-sim-value]");
     const simResult = document.querySelector("[data-sim-result]");
-    const simLabel = document.querySelector("[data-sim-label]");
     const simTabs = document.querySelector("[data-sim-tabs]");
-    let simMode = "me"; // 'me' | 'be'
+    const simPanels = document.querySelectorAll("[data-sim-panel]");
 
     function renderSim() {
       if (!simRange) return;
       const km = parseInt(simRange.value, 10) || 0;
       if (simValue) simValue.textContent = km + " km";
-      if (simMode === "me") {
-        const cost = -Math.round(km * 0.032);
-        if (simResult) simResult.textContent = cost + " €/mois";
-        if (simLabel) simLabel.textContent = "Tes km en voiture par mois";
-      } else {
-        // Aggregated impact across Belgian motorists (rough order of magnitude, illustrative).
-        const millions = (km * 0.032 * 5.2 / 1000).toFixed(1);
-        if (simResult) simResult.textContent = "−" + millions + " M€/mois";
-        if (simLabel) simLabel.textContent = "Km moyens par automobiliste";
-      }
+      const cost = -Math.round(km * 0.032);
+      if (simResult) simResult.textContent = cost + " €/mois";
     }
 
     function onSimInput() { renderSim(); }
@@ -1863,8 +1965,8 @@ function Pillars() {
       if (!btn || !simTabs) return;
       simTabs.querySelectorAll(".sim-mini-tab").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      simMode = btn.getAttribute("data-mode") || "me";
-      renderSim();
+      const mode = btn.getAttribute("data-mode") || "me";
+      simPanels.forEach((p) => { p.hidden = p.getAttribute("data-sim-panel") !== mode; });
     }
 
     if (simRange) simRange.addEventListener("input", onSimInput);
@@ -1960,27 +2062,36 @@ function Pillars() {
                 <button type="button" className="sim-mini-tab active" data-mode="me">Pour moi</button>
                 <button type="button" className="sim-mini-tab" data-mode="be">Pour la Belgique</button>
               </div>
-              <div className="sim-mini-row">
-                <span className="sim-mini-label" data-sim-label>Tes km en voiture par mois</span>
-                <span className="sim-mini-value" data-sim-value>500 km</span>
+              <div className="sim-mini-panel" data-sim-panel="me">
+                <div className="sim-mini-row">
+                  <span className="sim-mini-label">Tes km en voiture par mois</span>
+                  <span className="sim-mini-value" data-sim-value>500 km</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="2000"
+                  defaultValue="500"
+                  step="50"
+                  className="sim-mini-range"
+                  data-sim-range
+                  aria-label="Kilomètres par mois" />
+                <div className="sim-mini-result" data-sim-result>−16 €/mois</div>
+                <div className="sim-mini-caption">surcoût estimé</div>
               </div>
-              <input
-                type="range"
-                min="0"
-                max="2000"
-                defaultValue="500"
-                step="10"
-                className="sim-mini-range"
-                data-sim-range
-                aria-label="Kilomètres par mois" />
-              <div className="sim-mini-result" data-sim-result>−16 €/mois</div>
-              <div className="sim-mini-caption">surcoût estimé</div>
+              <div className="sim-mini-panel" data-sim-panel="be" hidden>
+                <div className="sim-mini-be-budget">+2,1 Mrds €/an</div>
+                <div className="sim-mini-be-budget-cap">recettes fiscales pour l'État</div>
+                <div className="sim-mini-be-redist">Une partie reversée <span className="sim-mini-be-redist-strong">aux ménages modestes via chèque énergie</span>.</div>
+                <div className="sim-mini-be-angles">
+                  <div className="sim-mini-be-angles-title">Angles morts</div>
+                  Travailleurs sans alternative aux transports en commun · risque de délocalisation des industries énergivores.
+                </div>
+              </div>
               <div className="sim-mini-reliab">
                 Fiabilité <span className="sim-mini-dot on"></span><span className="sim-mini-dot on"></span><span className="sim-mini-dot on"></span><span className="sim-mini-dot"></span><span className="sim-mini-dot"></span>
               </div>
               <div className="sim-mini-foot">
-                <span className="sim-mini-icon" aria-hidden="true">✈</span>
-                <span className="sim-mini-icon" aria-hidden="true">🔖</span>
                 <span>Bureau du Plan, Statbel 2024</span>
               </div>
             </div>
@@ -1994,11 +2105,12 @@ Impacte les décisions.
           <p>Un baromètre nuancé pour donner ton ressenti en 1 seconde, directement envoyé aux décideurs</p>
           <div className="visual baro-mini-host">
             <div className="baro-mini">
+              <div className="baro-mini-question">Ton avis sur cette mesure ?</div>
               <div className="baro-mini-emojis" data-baro-emojis>
-                <button type="button" className="baro-mini-emoji" data-baro-idx="0" aria-label="Pas du tout d'accord">❌</button>
-                <button type="button" className="baro-mini-emoji" data-baro-idx="1" aria-label="Pas d'accord">✗</button>
+                <button type="button" className="baro-mini-emoji" data-baro-idx="0" aria-label="Pas du tout d'accord">✕✕</button>
+                <button type="button" className="baro-mini-emoji" data-baro-idx="1" aria-label="Plutôt pas d'accord">✕</button>
                 <button type="button" className="baro-mini-emoji" data-baro-idx="2" aria-label="Neutre">—</button>
-                <button type="button" className="baro-mini-emoji" data-baro-idx="3" aria-label="D'accord">✓</button>
+                <button type="button" className="baro-mini-emoji" data-baro-idx="3" aria-label="Plutôt d'accord">✓</button>
                 <button type="button" className="baro-mini-emoji" data-baro-idx="4" aria-label="Tout à fait d'accord">✓✓</button>
               </div>
               <div className="baro-mini-bar">
