@@ -196,60 +196,129 @@
     .stat:last-child { border-bottom: 0; }
   }
 
-  /* Sticky why */
+  /* Why — full-width editorial */
   .why-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-    padding: 80px 60px;
-    align-items: start;
+    padding: 96px 60px;
+    display: flex; flex-direction: column;
+    gap: 72px;
+    align-items: stretch;
   }
-  .why-left { position: sticky; top: 100px; align-self: start; }
-  .why-left h2 {
+  .why-head { max-width: 900px; }
+  .why-head h2 {
     font-family: var(--font-display);
-    font-size: clamp(37px, 4.7vw, 58px);
+    font-size: clamp(40px, 5.2vw, 72px);
     line-height: 0.92;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
-  .why-right .block {
-    padding: 0 0 40px 0;
-    font-size: clamp(18px, 1.6vw, 24px);
-    line-height: 1.4;
-    font-weight: 400;
-    color: var(--ink-2);
-    letter-spacing: -0.01em;
+  .why-block {
+    display: flex; flex-direction: column;
+    max-width: 1200px;
   }
-  .why-right .block + .block { padding-top: 32px; border-top: 1px solid var(--line); }
-  .why-right .block .num { font-family: "Space Grotesk", monospace; font-size: 13px; color: var(--muted); display: block; margin-bottom: 16px; letter-spacing: 0.1em; }
-  .why-right .block .block-title {
+  .why-block .num {
+    font-family: "Space Grotesk", monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .why-block .block-title {
     font-family: var(--font-display);
-    font-size: clamp(24px, 2.4vw, 34px);
+    font-size: clamp(28px, 3.4vw, 48px);
     line-height: 0.95;
     letter-spacing: -0.02em;
     font-weight: 700;
     color: var(--ink);
-    margin: 0 0 14px 0;
+    margin: 0 0 20px 0;
   }
-  .terrain-photos {
+  .why-block p { margin: 0; }
+  .why-block p.constat {
+    font-size: clamp(20px, 1.9vw, 28px);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink-2);
+    max-width: 800px;
+    font-weight: 400;
+  }
+  .why-block p.lede {
+    font-size: clamp(17px, 1.4vw, 21px);
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 800px;
+    letter-spacing: -0.005em;
+  }
+  .why-quote {
+    position: relative;
+    padding-left: 32px;
+    margin: 32px 0;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 900px;
+  }
+  .why-quote::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 4px; bottom: 4px;
+    width: 4px;
+    background: linear-gradient(180deg, #B90051, #3C00CF);
+    border-radius: 2px;
+  }
+  .why-quote-attr {
+    display: block;
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .mosaic {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 24px;
+    gap: 12px;
+    height: 480px;
+    margin-top: 16px;
   }
-  .terrain-photos figure {
+  .mosaic-left-big {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .mosaic-left-big .m-1 { grid-row: 1 / span 2; grid-column: 1; }
+  .mosaic-left-big .m-2 { grid-row: 1; grid-column: 2; }
+  .mosaic-left-big .m-3 { grid-row: 2; grid-column: 2; }
+  .mosaic-right-big {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .mosaic-right-big .m-1 { grid-row: 1; grid-column: 1; }
+  .mosaic-right-big .m-2 { grid-row: 2; grid-column: 1; }
+  .mosaic-right-big .m-3 { grid-row: 1 / span 2; grid-column: 2; }
+  .mosaic figure {
     margin: 0;
-    aspect-ratio: 3 / 2;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     background: #ebebe5;
   }
-  .terrain-photos img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .mosaic img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
   }
-  @media (max-width: 700px) {
-    .terrain-photos { grid-template-columns: 1fr; gap: 12px; }
-    .why-right .block .block-title { font-size: 22px; }
+  @media (max-width: 900px) {
+    .why-grid { padding: 56px 20px; gap: 48px; }
+    .mosaic {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      height: auto;
+    }
+    .mosaic figure { height: 220px; }
+    .mosaic-left-big .m-1, .mosaic-left-big .m-2, .mosaic-left-big .m-3,
+    .mosaic-right-big .m-1, .mosaic-right-big .m-2, .mosaic-right-big .m-3 {
+      grid-column: 1; grid-row: auto;
+    }
+    .why-quote { padding-left: 20px; margin: 24px 0; }
   }
   .stabilo {
     background: linear-gradient(90deg, var(--grad-from), var(--grad-to));
@@ -261,11 +330,6 @@
     -webkit-box-decoration-break: clone;
     font-weight: 500;
   }
-  @media (max-width: 900px){
-    .why-grid { grid-template-columns: 1fr; gap: 32px; padding: 56px 20px; }
-    .why-left { position: static; }
-  }
-
   /* Pillars */
   .pillars {
     padding: 80px 60px;
@@ -1027,13 +1091,13 @@
     .nav .logo img { height: 22px; }
     .nav .cta { padding: 7px 14px; font-size: 12px; }
     footer { flex-direction: column; align-items: flex-start; gap: 24px; }
-    .pillars-head h2, .team h2, .contact h2, .why-left h2 { line-height: 0.88; }
+    .pillars-head h2, .team h2, .contact h2, .why-head h2 { line-height: 0.88; }
     h1 { line-height: 0.85 !important; }
     .marquee-track { animation-duration: 3s; }
     .sphere { opacity: 0.20; }
     .sim-mini-range::-webkit-slider-thumb { width: 28px; height: 28px; }
     .sim-mini-range::-moz-range-thumb { width: 28px; height: 28px; }
-    .why-left { padding-bottom: 32px; }
+    .why-head { padding-bottom: 8px; }
     /* FIX 2: hero-b mobile (same order as desktop, single column) */
     .hero-b { gap: 18px; padding: 80px 20px 36px; }
     /* FIX 4: CTA button + RS row on mobile */
@@ -1044,7 +1108,7 @@
     .arrow-mobile { display: inline; }
   }
   @media (max-width: 375px) {
-    h1, .pillars-head h2, .team h2, .contact h2, .why-left h2 { padding: 0 20px; }
+    h1, .pillars-head h2, .team h2, .contact h2, .why-head h2 { padding: 0 20px; }
   }
   @media (max-width: 500px) {
     .hero-a h1 { font-size: clamp(40px, 12vw, 72px); }
@@ -1720,7 +1784,14 @@ function Iphone({ url }) {
       <span className="side-btn r1"></span>
       <div className="screen">
         <div className="notch"></div>
-        <iframe src={url} title="Legit app preview" loading="lazy" />
+        <iframe
+          src={url}
+          title="Démo Legit"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+          onLoad={() => console.log('iPhone demo loaded')} />
       </div>
     </div>);
 
@@ -1832,12 +1903,9 @@ function HeroB() {
     </section>);
 }
 
-// ---------- Stats ----------
-function Stats() {
-  return (
-    <section className="stats-band">
-      <div className="stat reveal">
-        <div className="num grad-text" style={{ lineHeight: "1" }}>33,2 Md€</div>
+// ---------- Stats removed (was here, deleted) ----------
+/* DELETED
+START
         <div className="label">Le déficit public belge en 2025. Qu'est-ce que ça implique concrètement pour toi&nbsp;?</div>
       </div>
       <div className="stat reveal" style={{ "--d": "100ms" }}>
@@ -1849,92 +1917,90 @@ function Stats() {
         <div className="label">Des jeunes pratiquent la News Avoidance car l'actu est trop nombreuse et déprimante.</div>
       </div>
     </section>);
-
-}
-
-// ---------- Why (sticky) ----------
+*/
+// ---------- Why (editorial full-width) ----------
 function Why() {
   return (
     <section className="why-grid" id="why">
-      <div className="why-left">
-        <div className="section-tag reveal">Pourquoi Legit existe</div>
-        <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "0.95" }}>
+      <div className="why-head reveal">
+        <div className="section-tag">Pourquoi Legit existe</div>
+        <h2 style={{ "--d": "80ms", lineHeight: "0.95" }}>
           L'info est disponible en masse.<br />
           Et <span className="grad-text">personne ne la comprend vraiment</span>.
         </h2>
       </div>
-      <div className="why-right">
-        <div className="block reveal">
-          <span className="num">LE CONSTAT</span>
+      <div className="why-block reveal" style={{ "--d": "100ms" }}>
+        <span className="num">LE CONSTAT</span>
+        <p className="constat">
           En février 2026, ça faisait <span className="stabilo">600 jours sans gouvernement</span> à Bruxelles, beaucoup de bruit médiatique, <span className="stabilo">impossible de comprendre ce que ça implique</span> concrètement.
-        </div>
-        <div className="block reveal" style={{ "--d": "100ms" }}>
-          <span className="num">LE PROBLÈME</span>
-          L'actu en ligne aujourd'hui&nbsp;: surplus d'infos, pas concret, fake news, contenu clivant, beaucoup de jargon, algorithmes opaques. Et si tu veux t'exprimer&nbsp;? Bonne chance...
-        </div>
-        <div className="block reveal" style={{ "--d": "200ms" }}>
+        </p>
+      </div>
+        <div className="why-block reveal" style={{ "--d": "200ms" }}>
           <span className="num">SUR LE TERRAIN</span>
-          <h3 className="block-title">Même constat, sur le terrain.</h3>
-          On a installé des tonnelles pop-up à Bruxelles et Louvain-la-Neuve, fait des micro-trottoirs et des interviews. 100+ jeunes nous ont dit la même chose&nbsp;: <span className="stabilo">«&nbsp;L'actualité est compliquée et on ne comprend pas les implications pour nous.&nbsp;»</span>
-          <div className="terrain-photos">
-            <figure>
+          <h3 className="block-title">Même constat, en face-à-face.</h3>
+          <p className="lede">Tonnelles pop-up à Bruxelles et Louvain-la-Neuve, micro-trottoirs, interviews. 100+ jeunes nous ont dit la même chose.</p>
+          <blockquote className="why-quote">
+            «&nbsp;L'actualité est compliquée et on ne comprend pas les implications pour nous.&nbsp;»
+            <span className="why-quote-attr">— Recueilli en tonnelle, mars 2026</span>
+          </blockquote>
+          <div className="mosaic mosaic-left-big">
+            <figure className="m-1">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp 1200w"
-                sizes="(max-width: 700px) 100vw, 33vw"
+                sizes="(max-width: 700px) 100vw, 60vw"
                 alt="Tonnelle citoyenne Legit à Bruxelles"
                 loading="lazy" decoding="async" />
             </figure>
-            <figure>
+            <figure className="m-2">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(1200%20px).webp 1200w"
-                sizes="(max-width: 700px) 100vw, 33vw"
+                sizes="(max-width: 700px) 100vw, 30vw"
                 alt="Micro-trottoirs et interviews avec des jeunes"
                 loading="lazy" decoding="async" />
             </figure>
-            <figure>
+            <figure className="m-3">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(1200%20px).webp 1200w"
-                sizes="(max-width: 700px) 100vw, 33vw"
+                sizes="(max-width: 700px) 100vw, 30vw"
                 alt="Tonnelle citoyenne Legit à Louvain-la-Neuve"
                 loading="lazy" decoding="async" />
             </figure>
           </div>
         </div>
-        <div className="block reveal" style={{ "--d": "300ms" }}>
+        <div className="why-block reveal" style={{ "--d": "300ms" }}>
           <span className="num">CE QU'ON A APPRIS</span>
           <h3 className="block-title">L'info concrète change tout.</h3>
-          En 20 minutes, des jeunes qui pensaient n'avoir aucun avis ont produit des propositions argumentées. C'est exactement ce que Legit veut généraliser.
-          <div className="terrain-photos">
-            <figure>
+          <p className="lede">En 20 minutes, des jeunes qui pensaient n'avoir aucun avis ont produit des propositions argumentées.</p>
+          <div className="mosaic mosaic-right-big">
+            <figure className="m-1">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(1200%20px).webp 1200w"
-                sizes="(max-width: 700px) 100vw, 33vw"
+                sizes="(max-width: 700px) 100vw, 30vw"
                 alt="Atelier participatif avec des jeunes citoyens"
                 loading="lazy" decoding="async" />
             </figure>
-            <figure>
+            <figure className="m-2">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(1200%20px).webp 1200w"
-                sizes="(max-width: 700px) 100vw, 33vw"
+                sizes="(max-width: 700px) 100vw, 30vw"
                 alt="Propositions argumentées issues des ateliers Legit"
                 loading="lazy" decoding="async" />
             </figure>
-            <figure>
+            <figure className="m-3">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(1200%20px).webp 1200w"
-                sizes="(max-width: 700px) 100vw, 33vw"
+                sizes="(max-width: 700px) 100vw, 60vw"
                 alt="Jeunes citoyens engagés autour de la tonnelle Legit"
                 loading="lazy" decoding="async" />
             </figure>
           </div>
         </div>
-      </div>
     </section>);
 
 }
@@ -2478,7 +2544,6 @@ function App() {
       <Nav />
       <HeroB />
       <Marquee />
-      <Stats />
       <Why />
       <Pillars />
       <Team />
