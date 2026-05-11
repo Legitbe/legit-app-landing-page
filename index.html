@@ -94,14 +94,14 @@
   .sphere {
     position: absolute;
     border-radius: 50%;
-    filter: blur(72px);
-    opacity: 0.41;
+    filter: blur(86px);
+    opacity: 0.31;
     will-change: transform;
   }
-  .s1 { width: 624px; height: 624px; left: -120px; top: 8vh; background: radial-gradient(circle at 30% 30%, #ff4d97, #b80050 60%, transparent 70%); }
-  .s2 { width: 816px; height: 816px; right: -200px; top: 80vh; background: radial-gradient(circle at 30% 30%, #6a4dff, #3c00cf 60%, transparent 70%); }
-  .s3 { width: 504px; height: 504px; left: 38vw; top: 220vh; background: radial-gradient(circle at 30% 30%, #c0a8ff, #3c00cf 60%, transparent 70%); }
-  .s4 { width: 432px; height: 432px; right: 10vw; top: 360vh; background: radial-gradient(circle at 30% 30%, #ff9ec5, #b80050 60%, transparent 70%); }
+  .s1 { width: 750px; height: 750px; left: -160px; top: 6vh; background: radial-gradient(circle at 30% 30%, #ff4d97, #b80050 60%, transparent 70%); }
+  .s2 { width: 980px; height: 980px; right: -260px; top: 78vh; background: radial-gradient(circle at 30% 30%, #6a4dff, #3c00cf 60%, transparent 70%); }
+  .s3 { width: 605px; height: 605px; left: 36vw; top: 220vh; background: radial-gradient(circle at 30% 30%, #c0a8ff, #3c00cf 60%, transparent 70%); }
+  .s4 { width: 520px; height: 520px; right: 8vw; top: 360vh; background: radial-gradient(circle at 30% 30%, #ff9ec5, #b80050 60%, transparent 70%); }
 
   /* main container above bg */
   #app { position: relative; z-index: 1; }
@@ -201,7 +201,7 @@
   .why-left h2 {
     font-family: var(--font-display);
     font-size: clamp(37px, 4.7vw, 58px);
-    line-height: 0.98;
+    line-height: 0.92;
     letter-spacing: -0.02em;
   }
   .why-right .block {
@@ -237,7 +237,7 @@
   .pillars-head h2 {
     font-family: var(--font-display);
     font-size: clamp(42px, 5vw, 88px);
-    line-height: 0.95;
+    line-height: 0.88;
     letter-spacing: -0.03em;
     max-width: 14ch;
   }
@@ -306,7 +306,7 @@
   .team h2 {
     font-family: var(--font-display);
     font-size: clamp(42px, 5vw, 88px);
-    line-height: 0.95;
+    line-height: 0.88;
     letter-spacing: -0.03em;
     margin-bottom: 24px;
   }
@@ -357,7 +357,7 @@
   .contact h2 {
     font-family: var(--font-display);
     font-size: clamp(36px, 4.2vw, 68px);
-    line-height: 0.95;
+    line-height: 0.88;
     letter-spacing: -0.02em;
   }
   .contact .sub { color: var(--muted); font-size: 17px; line-height: 1.5; margin-top: 24px; max-width: 40ch; }
@@ -468,7 +468,7 @@
   .hero-a h1 {
     font-family: var(--font-display);
     font-size: clamp(56px, 10vw, 180px);
-    line-height: 0.88;
+    line-height: 0.82;
     letter-spacing: -0.045em;
     max-width: 16ch;
     margin: 0 auto;
@@ -498,22 +498,22 @@
 
   /* Hero B */
   .hero-b {
-    min-height: 72vh;
-    padding: 80px 24px 45px;
-    display: grid; grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
-    align-items: center;
+    min-height: 58vh;
+    padding: 64px 24px 36px;
+    display: flex; flex-direction: column;
+    gap: 22px;
+    align-items: stretch;
     position: relative;
   }
-  .hero-b .pill-row { margin-bottom: 24px; }
+  .hero-b .pill-row { margin-bottom: 0; }
   .hero-b h1 {
     font-family: var(--font-display);
     font-size: clamp(48px, 8vw, 140px);
-    line-height: 0.9;
+    line-height: 0.85;
     letter-spacing: -0.045em;
   }
-  .hero-b .sub { margin-top: 32px; font-size: 19px; line-height: 1.5; color: var(--muted); max-width: 50ch; background: linear-gradient(135deg, rgba(185,0,81,0.10), rgba(60,0,207,0.10)); border-radius: 12px; padding: 16px 20px; }
-  .hero-b .ctas { margin-top: 36px; }
+  .hero-b .sub { margin-top: 0; font-size: 19px; line-height: 1.5; color: var(--muted); max-width: 50ch; background: linear-gradient(135deg, rgba(185,0,81,0.12), rgba(60,0,207,0.12)); border-radius: 12px; padding: 16px 20px; }
+  .hero-b .ctas { margin-top: 0; }
   .hero-b .iphone-wrap { display: flex; justify-content: center; perspective: 1400px; }
   .hero-b .iphone { transform: rotateY(-8deg) rotateX(4deg); }
   .hero-b .side-meta {
@@ -522,13 +522,16 @@
     color: var(--muted);
     writing-mode: vertical-rl; transform: rotate(180deg);
   }
-  .hero-b > div:first-child { display: flex; flex-direction: column; }
-  .hero-b > div:first-child .pill-row { order: 3; }
+  .hero-b > div:first-child { display: contents; }
   .hero-b > div:first-child h1 { order: 1; }
-  .hero-b > div:first-child .sub { order: 4; }
   .hero-b > div:first-child .cta-row { order: 2; }
+  .hero-b > div:first-child .pill-row { order: 3; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .hero-b > div:first-child .pill-row .btn-icon { width: 40px; height: 40px; }
+  .hero-b .iphone-wrap { order: 4; align-self: center; }
+  .hero-b > div:first-child .sub { order: 5; }
+  .hero-b .side-meta { order: 99; }
   @media (max-width: 1000px) {
-    .hero-b { grid-template-columns: 1fr; padding: 96px 20px 48px; gap: 32px; }
+    .hero-b { padding: 80px 20px 40px; gap: 20px; }
     .hero-b .side-meta { display: none; }
     .hero-a { padding: 96px 20px 48px; min-height: auto; }
     .iphone { width: 280px; }
@@ -573,7 +576,7 @@
   }
   .marquee-track {
     display: flex; gap: 60px; white-space: nowrap;
-    animation: scroll 20s linear infinite;
+    animation: scroll 10s linear infinite;
     font-family: var(--font-display);
     font-size: clamp(40px, 5vw, 72px);
     letter-spacing: -0.02em;
@@ -975,20 +978,19 @@
     .nav .logo img { height: 22px; }
     .nav .cta { padding: 7px 14px; font-size: 12px; }
     footer { flex-direction: column; align-items: flex-start; gap: 24px; }
-    .pillars-head h2, .team h2, .contact h2, .why-left h2 { line-height: 0.95; }
-    h1 { line-height: 0.92 !important; }
-    .marquee-track { animation-duration: 6s; }
-    .sphere { opacity: 0.27; }
+    .pillars-head h2, .team h2, .contact h2, .why-left h2 { line-height: 0.88; }
+    h1 { line-height: 0.85 !important; }
+    .marquee-track { animation-duration: 3s; }
+    .sphere { opacity: 0.20; }
     .sim-mini-range::-webkit-slider-thumb { width: 28px; height: 28px; }
     .sim-mini-range::-moz-range-thumb { width: 28px; height: 28px; }
     .why-left { padding-bottom: 32px; }
-    /* FIX 2: hero-b mobile order */
-    .hero-b { display: flex; flex-direction: column; gap: 20px; }
-    .hero-b > div:first-child { display: contents; }
-    .hero-b > div:first-child .sub { order: 5; }
-    .hero-b .iphone-wrap { order: 4; }
-    /* FIX 4: CTA button sizing */
-    .hero-b .btn-primary { width: auto; align-self: flex-start; }
+    /* FIX 2: hero-b mobile (same order as desktop, single column) */
+    .hero-b { gap: 18px; padding: 80px 20px 36px; }
+    /* FIX 4: CTA button + RS row on mobile */
+    .hero-b .btn-primary { width: auto; align-self: flex-start; padding: 14px 20px; }
+    .hero-b > div:first-child .pill-row { flex-wrap: nowrap; gap: 10px; }
+    .hero-b > div:first-child .pill-row .btn-icon { width: 38px; height: 38px; }
     .arrow-desktop { display: none; }
     .arrow-mobile { display: inline; }
   }
@@ -1748,13 +1750,19 @@ function HeroB() {
     <section className="hero-b" data-screen-label="Hero B — split editorial">
       <div>
         <div className="pill-row reveal">
+          <a href={SOCIALS.instagram} target="_blank" rel="noreferrer" className="btn-icon" aria-label="Instagram">
+            <InstagramIcon />
+          </a>
+          <a href={SOCIALS.tiktok} target="_blank" rel="noreferrer" className="btn-icon" aria-label="TikTok">
+            <TikTokIcon />
+          </a>
           <span className="pill"><span className="dot"></span> Incubé au Startlab</span>
         </div>
-        <h1 className="reveal" style={{ "--d": "80ms", lineHeight: "0.98" }}>
+        <h1 className="reveal" style={{ "--d": "80ms", lineHeight: "0.85" }}>
           T'as scrollé <br />
-          <span className="grad-text" style={{ lineHeight: "1" }}>200 fois</span> <br />
+          <span className="grad-text" style={{ lineHeight: "0.92" }}>200 fois</span> <br />
           aujourd'hui.
-          <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, lineHeight: "0.92", fontSize: "clamp(28px, 4.2vw, 56px)", marginTop: "10px", letterSpacing: "-0.02em", fontFamily: "Poppins" }}>
+          <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, lineHeight: "0.85", fontSize: "clamp(28px, 4.2vw, 56px)", marginTop: "10px", letterSpacing: "-0.02em", fontFamily: "Poppins" }}>
             Mais t'as réellement<br />compris quelque chose&nbsp;?
           </span>
         </h1>
@@ -1765,12 +1773,6 @@ function HeroB() {
         <div className="cta-row ctas reveal" style={{ "--d": "240ms" }}>
           <a href={APP_URL} target="_blank" rel="noreferrer" className="btn-primary">
             Comprendre l'actu dès maintenant <span className="arrow arrow-desktop">→</span><span className="arrow arrow-mobile">↓</span>
-          </a>
-          <a href={SOCIALS.instagram} target="_blank" rel="noreferrer" className="btn-icon" aria-label="Instagram">
-            <InstagramIcon />
-          </a>
-          <a href={SOCIALS.tiktok} target="_blank" rel="noreferrer" className="btn-icon" aria-label="TikTok">
-            <TikTokIcon />
           </a>
         </div>
       </div>
@@ -1807,7 +1809,7 @@ function Why() {
     <section className="why-grid" id="why">
       <div className="why-left">
         <div className="section-tag reveal">Pourquoi Legit existe</div>
-        <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.05" }}>
+        <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "0.95" }}>
           L'info est disponible en masse.<br />
           Et <span className="grad-text">personne ne la comprend vraiment</span>.
         </h2>
@@ -1917,10 +1919,10 @@ function Pillars() {
   return (
     <section className="pillars" id="how">
       <div className="pillars-head reveal">
-        <h2 style={{ lineHeight: "1.25" }}>
+        <h2 style={{ lineHeight: "1.05" }}>
           Comprendre. <br />
           Simuler. <br />
-          <span className="grad-text" style={{ lineHeight: "1.25" }}>Participer.</span>
+          <span className="grad-text" style={{ lineHeight: "1.05" }}>Participer.</span>
         </h2>
         <div className="meta">
           <br />
@@ -2047,8 +2049,8 @@ function Team() {
   return (
     <section className="team" id="team">
       <div className="section-tag reveal">Qui sommes-nous</div>
-      <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.05" }}>
-        Quatre <span className="grad-text" style={{ lineHeight: "1.05" }}>jeunes</span>.<br />
+      <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "0.95" }}>
+        Quatre <span className="grad-text" style={{ lineHeight: "0.95" }}>jeunes</span>.<br />
         Une plateforme.
       </h2>
       <div className="pill-row reveal" style={{ "--d": "120ms" }}>
@@ -2117,8 +2119,8 @@ function Contact() {
     <section className="contact" id="contact">
       <div>
         <div className="section-tag reveal">Contact</div>
-        <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.25" }}>
-          Construisons Legit avec les <span className="grad-text" style={{ lineHeight: "1.25" }}>bons partenaires</span>.
+        <h2 className="reveal" style={{ "--d": "80ms", lineHeight: "1.05" }}>
+          Construisons Legit avec les <span className="grad-text" style={{ lineHeight: "1.05" }}>bons partenaires</span>.
         </h2>
         <p className="sub reveal" style={{ "--d": "160ms", color: "rgb(52, 52, 52)", fontWeight: "500" }}>Tu représentes une institution, un média ou tu es investisseur ? On veut te parler.</p>
         <div className="reveal" style={{ "--d": "240ms", marginTop: 40, fontSize: 14, color: "var(--muted)" }}>
