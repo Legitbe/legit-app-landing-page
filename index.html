@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
+<html lang="fr-BE"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Legit — Comprends l'actualité belge et son impact sur ta vie | legit-app.be</title>
-<meta name="description" content="Des carrousels clairs, un simulateur d'impact, et ton avis qui compte. L'info belge enfin accessible.">
-<meta name="author" content="Joachim Brabant">
-<meta name="robots" content="index, follow">
+<meta name="description" content="Legit, c'est ce que l'actu belge implique concrètement pour toi. Décryptages clairs, simulateur d'impact perso, baromètre d'opinion 16-28 ans.">
+<meta name="keywords" content="actualité belge, civic tech, jeunes, démocratie participative, simulateur politique, baromètre opinion, Belgique">
+<meta name="author" content="Legit">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="language" content="French">
+<meta name="geo.region" content="BE-BRU">
+<meta name="geo.placename" content="Brussels">
 <link rel="canonical" href="https://legit-app.be/">
 <link rel="alternate" hreflang="fr-BE" href="https://legit-app.be/">
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -15,18 +19,21 @@
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="theme-color" content="#b90051">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://legit-app.be">
+<meta property="og:url" content="https://legit-app.be/">
 <meta property="og:title" content="Legit — Comprends l'actu qui te concerne">
-<meta property="og:description" content="Des carrousels clairs, un simulateur d'impact, et ton avis qui compte. L'info belge enfin accessible.">
+<meta property="og:description" content="Legit, c'est ce que l'actu belge implique concrètement pour toi. Décryptages clairs, simulateur d'impact perso, baromètre d'opinion 16-28 ans.">
 <meta property="og:image" content="https://legit-app.be/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Legit — l'actu belge expliquée, simulée et débattue par les 16-28 ans">
 <meta property="og:locale" content="fr_BE">
 <meta property="og:site_name" content="Legit">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://legit-app.be/">
 <meta name="twitter:title" content="Legit — Comprends l'actu qui te concerne">
-<meta name="twitter:description" content="Des carrousels clairs, un simulateur d'impact, et ton avis qui compte. L'info belge enfin accessible.">
+<meta name="twitter:description" content="Legit, c'est ce que l'actu belge implique concrètement pour toi. Décryptages clairs, simulateur d'impact perso, baromètre d'opinion 16-28 ans.">
 <meta name="twitter:image" content="https://legit-app.be/og-image.png">
+<meta name="twitter:image:alt" content="Legit — l'actu belge expliquée, simulée et débattue par les 16-28 ans">
 <link rel="preload" as="image"
       imagesrcset="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp 1200w"
       imagesizes="(max-width: 700px) 100vw, 33vw"
@@ -37,9 +44,9 @@
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="dns-prefetch" href="https://legit-app3.vercel.app">
 <link rel="dns-prefetch" href="https://esm.sh">
-<link rel="preload" as="script" crossorigin href="https://unpkg.com/react@18.3.1/umd/react.production.min.js">
-<link rel="preload" as="script" crossorigin href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js">
-<link rel="preload" as="script" crossorigin href="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js">
+<link rel="preload" as="script" crossorigin="anonymous" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js">
+<link rel="preload" as="script" crossorigin="anonymous" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js">
+<link rel="preload" as="script" crossorigin="anonymous" integrity="sha384-EIcs2MbARRLcLs7Gv2wqqhhfMlcLeW9yuJsWki1r5iveN1F5gpzHOwAKycJqSQOI" href="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Boldonse&family=Instrument+Serif:wght@400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @font-face {
@@ -1099,8 +1106,18 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Legit",
-  "url": "https://legit-app.be",
-  "logo": "https://legit-app.be/icon-512.png",
+  "url": "https://legit-app.be/",
+  "logo": "https://legit-app.be/web-app-manifest-512x512.png",
+  "email": "legit.belgique@gmail.com",
+  "description": "Legit, c'est ce que l'actu belge implique concrètement pour toi. Décryptages clairs, simulateur d'impact perso, baromètre d'opinion 16-28 ans.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Belgium"
+  },
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Brussels, Belgium"
+  },
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "legit.belgique@gmail.com",
@@ -1111,12 +1128,7 @@
   "sameAs": [
     "https://www.instagram.com/_legit_be/",
     "https://www.tiktok.com/@legit.be"
-  ],
-  "foundingLocation": {
-    "@type": "Place",
-    "name": "Bruxelles, Belgique"
-  },
-  "description": "Application mobile belge qui transforme l'actualité politique et citoyenne en contenu compréhensible pour les 14-28 ans."
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -1219,9 +1231,9 @@
 <div id="app"></div>
 <div id="bg-spheres-portal"></div>
 
-<script defer crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script defer crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-<script defer src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script defer crossorigin="anonymous" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script defer crossorigin="anonymous" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script defer crossorigin="anonymous" integrity="sha384-EIcs2MbARRLcLs7Gv2wqqhhfMlcLeW9yuJsWki1r5iveN1F5gpzHOwAKycJqSQOI" src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 window.__supabase = createClient(
@@ -2188,6 +2200,9 @@ function Team() {
 }
 
 // ---------- Contact ----------
+// In-memory submit throttle: blocks repeat submits within 30s without persisting state.
+// Lives at module scope so React state resets don't reset the throttle window.
+let __lastSubmitAt = 0;
 function Contact() {
   const [data, setData] = useState({ name: "", email: "", org: "", message: "", _hp: "" });
   const [loading, setLoading] = useState(false);
@@ -2197,14 +2212,27 @@ function Contact() {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (data._hp) return; // honeypot
+    const now = Date.now();
+    if (now - __lastSubmitAt < 30000) {
+      setStatus('error');
+      setErrMsg("Patiente quelques secondes avant de réessayer.");
+      return;
+    }
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const name = data.name.trim();
     const email = data.email.trim();
     const org = data.org.trim();
     const message = data.message.trim();
-    if (!emailRe.test(email)) { setStatus('error'); setErrMsg("Adresse email invalide."); return; }
-    if (name.length < 2) { setStatus('error'); setErrMsg("Nom trop court (min. 2 caractères)."); return; }
-    if (message.length < 10) { setStatus('error'); setErrMsg("Message trop court (min. 10 caractères)."); return; }
+    // Bot/XSS guard on free-text fields: forbid HTML tags in name + org.
+    const htmlTag = /<\/?[a-z][\s\S]*>/i;
+    if (!emailRe.test(email) || email.length > 200) { setStatus('error'); setErrMsg("Adresse email invalide."); return; }
+    if (name.length < 2 || name.length > 100 || htmlTag.test(name) || /https?:\/\//i.test(name)) { setStatus('error'); setErrMsg("Nom invalide."); return; }
+    if (org.length > 120 || htmlTag.test(org)) { setStatus('error'); setErrMsg("Organisation invalide."); return; }
+    if (message.length < 10 || message.length > 2000) { setStatus('error'); setErrMsg("Message hors limites (10–2000 caractères)."); return; }
+    // Anti-spam: more than 2 URLs in the message is almost always a bot.
+    const urlMatches = message.match(/https?:\/\/\S+/gi) || [];
+    if (urlMatches.length > 2) { setStatus('error'); setErrMsg("Trop de liens dans le message."); return; }
+    __lastSubmitAt = now;
     setLoading(true); setStatus(null);
     try {
       const sb = window.__supabase;
