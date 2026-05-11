@@ -34,6 +34,12 @@
 <link rel="preconnect" href="https://obgtzkmugkuoqzjjsvqs.supabase.co" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="dns-prefetch" href="https://legit-app3.vercel.app">
+<link rel="dns-prefetch" href="https://esm.sh">
+<link rel="preload" as="script" crossorigin href="https://unpkg.com/react@18.3.1/umd/react.production.min.js">
+<link rel="preload" as="script" crossorigin href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js">
+<link rel="preload" as="script" crossorigin href="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Boldonse&family=Instrument+Serif:wght@400&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @font-face {
@@ -171,30 +177,6 @@
   .iphone .side-btn.b3 { top: 230px; height: 60px; border-radius: 2px 0 0 2px; }
   .iphone .side-btn.r1 { right: -2px; left: auto; top: 180px; height: 90px; border-radius: 0 2px 2px 0; }
 
-  /* Stats */
-  .stats-band {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid var(--line);
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(8px);
-    padding-top: 16px;
-  }
-  .stat { padding: 36px 40px; border-right: 1px solid var(--line); position: relative; overflow: visible; }
-  .stat:last-child { border-right: 0; }
-  .stat .num {
-    font-family: var(--font-display);
-    font-size: clamp(40px, 5vw, 72px);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-  .stat .label {
-    margin-top: 14px; font-size: 14px; color: var(--muted); max-width: 32ch;
-  }
-  @media (max-width: 800px){
-    .stats-band { grid-template-columns: 1fr; }
-    .stat { border-right: 0; border-bottom: 1px solid var(--line); }
-    .stat:last-child { border-bottom: 0; }
-  }
 
   /* Why — full-width editorial */
   .why-grid {
@@ -557,46 +539,6 @@
   }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-  /* Hero A */
-  .hero-a {
-    min-height: 90vh;
-    padding: 100px 24px 56px;
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center;
-    position: relative;
-  }
-  .hero-a .pill-row { margin-bottom: 32px; }
-  .hero-a h1 {
-    font-family: var(--font-display);
-    font-size: clamp(56px, 10vw, 180px);
-    line-height: 0.82;
-    letter-spacing: -0.045em;
-    max-width: 16ch;
-    margin: 0 auto;
-  }
-  .hero-a .h1-q { display: block; }
-  .hero-a .sub {
-    margin-top: 40px;
-    font-size: clamp(16px, 1.4vw, 21px);
-    line-height: 1.5;
-    color: var(--muted);
-    max-width: 64ch;
-    margin-left: auto; margin-right: auto;
-  }
-  .hero-a .iphone-wrap {
-    margin-top: 40px;
-    perspective: 1400px;
-    position: relative;
-  }
-  .hero-a .ctas { margin-top: 28px; justify-content: center; }
-  .hero-a .marquee-anchor {
-    margin-top: 28px;
-    font-family: "Space Grotesk", monospace; font-size: 12px;
-    letter-spacing: 0.2em; color: var(--muted);
-    display: flex; align-items: center; gap: 12px;
-  }
-  .hero-a .marquee-anchor .line { width: 60px; height: 1px; background: var(--line-strong); }
-
   /* Hero B — desktop grid 2 cols (text + iPhone), full-width lede below */
   .hero-b {
     min-height: 58vh;
@@ -678,7 +620,6 @@
       font-size: clamp(20px, 4.6vw, 24px);
     }
     .hero-b .side-meta { display: none; }
-    .hero-a { padding: 96px 20px 48px; min-height: auto; }
     .iphone { width: 280px; }
   }
   @media (max-width: 600px) {
@@ -1150,10 +1091,7 @@
     h1, .pillars-head h2, .team h2, .contact h2, .why-head h2 { padding: 0 20px; }
   }
   @media (max-width: 500px) {
-    .hero-a h1 { font-size: clamp(40px, 12vw, 72px); }
     .hero-b h1 { font-size: clamp(40px, 12vw, 72px); }
-    .stat { padding: 24px 20px; }
-    .stat .num { font-size: clamp(36px, 12vw, 56px); }
   }
 </style>
 <script type="application/ld+json">
@@ -1281,9 +1219,9 @@
 <div id="app"></div>
 <div id="bg-spheres-portal"></div>
 
-<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script defer crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script defer crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script defer src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 window.__supabase = createClient(
@@ -1826,7 +1764,10 @@ function Iphone({ url }) {
         <iframe
           src={url}
           title="Démo Legit"
+          width="296"
+          height="641"
           loading="lazy"
+          fetchpriority="low"
           referrerPolicy="no-referrer-when-downgrade"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
@@ -1865,43 +1806,6 @@ function Nav() {
 
 }
 
-// ---------- Hero A ----------
-function HeroA() {
-  return (
-    <section className="hero-a" data-screen-label="Hero A — centered">
-      <div className="pill-row reveal">
-        <span className="pill" style={{ fontFamily: "Poppins" }}><span className="dot"></span> Incubé à Startlab.Brussels</span>
-      </div>
-      <h1 className="reveal" style={{ "--d": "100ms" }}>
-        <span className="h1-q">T'as scrollé</span>
-        <span className="h1-q grad-text">200 fois aujourd'hui.</span>
-        <span className="h1-q">Mais t'as compris</span>
-        <span className="h1-q" style={{ fontStyle: "italic", fontFamily: '"Instrument Serif", serif', fontWeight: 400, letterSpacing: "-0.02em" }}>quoi, vraiment&nbsp;?</span>
-      </h1>
-      <p className="sub reveal" style={{ "--d": "200ms" }}>
-        Legit transforme l'actu en quelque chose d'utile&nbsp;: ce que ça change pour ta vie,
-        ce que pensent les gens comme toi, et un moyen d'envoyer un vrai signal aux politiques.
-      </p>
-      <div className="iphone-wrap reveal" style={{ "--d": "300ms" }}>
-        <Iphone url={APP_URL} />
-      </div>
-      <div className="cta-row ctas reveal" style={{ "--d": "400ms" }}>
-        <a href={APP_URL} target="_blank" rel="noreferrer" className="btn-primary">
-          Teste la démo, comprends l'actu <span className="arrow arrow-desktop">→</span><span className="arrow arrow-mobile">↓</span>
-        </a>
-        <a href={SOCIALS.instagram} target="_blank" rel="noreferrer" className="btn-icon" aria-label="Instagram">
-          <InstagramIcon />
-        </a>
-        <a href={SOCIALS.tiktok} target="_blank" rel="noreferrer" className="btn-icon" aria-label="TikTok">
-          <TikTokIcon />
-        </a>
-      </div>
-      <div className="marquee-anchor reveal" style={{ "--d": "500ms" }}>
-        <span className="line"></span> SCROLL <span className="line"></span>
-      </div>
-    </section>);
-
-}
 
 // ---------- Hero B ----------
 function HeroB() {
@@ -1941,21 +1845,6 @@ function HeroB() {
     </section>);
 }
 
-// ---------- Stats removed (was here, deleted) ----------
-/* DELETED
-START
-        <div className="label">Le déficit public belge en 2025. Qu'est-ce que ça implique concrètement pour toi&nbsp;?</div>
-      </div>
-      <div className="stat reveal" style={{ "--d": "100ms" }}>
-        <div className="num" style={{ lineHeight: "1" }}>600 jours</div>
-        <div className="label">Sans gouvernement à Bruxelles. Combien de gens ont compris ce que ça coûtait ?</div>
-      </div>
-      <div className="stat reveal" style={{ "--d": "200ms" }}>
-        <div className="num" style={{ lineHeight: "1" }}>42<span style={{ fontSize: "0.5em" }}>%</span></div>
-        <div className="label">Des jeunes pratiquent la News Avoidance car l'actu est trop nombreuse et déprimante.</div>
-      </div>
-    </section>);
-*/
 // ---------- Why (editorial full-width) ----------
 function Why() {
   return (
@@ -1987,24 +1876,27 @@ function Why() {
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%201%20(1200%20px).webp 1200w"
                 sizes="(max-width: 700px) 100vw, 60vw"
+                width="800" height="533"
                 alt="Tonnelle citoyenne Legit à Bruxelles"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" fetchpriority="low" />
             </figure>
             <figure className="m-2">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%202%20(1200%20px).webp 1200w"
                 sizes="(max-width: 700px) 100vw, 30vw"
+                width="800" height="533"
                 alt="Micro-trottoirs et interviews avec des jeunes"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" fetchpriority="low" />
             </figure>
             <figure className="m-3">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%203%20(1200%20px).webp 1200w"
                 sizes="(max-width: 700px) 100vw, 30vw"
+                width="800" height="533"
                 alt="Tonnelle citoyenne Legit à Louvain-la-Neuve"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" fetchpriority="low" />
             </figure>
           </div>
         </div>
@@ -2018,24 +1910,27 @@ function Why() {
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%204%20(1200%20px).webp 1200w"
                 sizes="(max-width: 700px) 100vw, 30vw"
+                width="800" height="533"
                 alt="Atelier participatif avec des jeunes citoyens"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" fetchpriority="low" />
             </figure>
             <figure className="m-2">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%205%20(1200%20px).webp 1200w"
                 sizes="(max-width: 700px) 100vw, 30vw"
+                width="800" height="533"
                 alt="Propositions argumentées issues des ateliers Legit"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" fetchpriority="low" />
             </figure>
             <figure className="m-3">
               <img
                 src="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(1200%20px).webp"
                 srcSet="https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(600%20px).webp 600w, https://obgtzkmugkuoqzjjsvqs.supabase.co/storage/v1/object/public/tonnelles/Photo%20webp%206%20(1200%20px).webp 1200w"
                 sizes="(max-width: 700px) 100vw, 60vw"
+                width="800" height="533"
                 alt="Jeunes citoyens engagés autour de la tonnelle Legit"
-                loading="lazy" decoding="async" />
+                loading="lazy" decoding="async" fetchpriority="low" />
             </figure>
           </div>
         </div>
