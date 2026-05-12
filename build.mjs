@@ -1,18 +1,14 @@
-// build.mjs — Pre-compile the inline <script type="text/babel"> block via esbuild.
+// build.mjs — Pre-compile src/app.jsx with esbuild and inject the bundle into index.html.
 //
 // Steps:
-//   1. Read index.html.
-//   2. Extract the JSX source from the <script type="text/babel" ...>…</script> block.
-//   3. Transform JSX → JS (IIFE, ES2020, minified, React.createElement).
-//   4. Hash the output (SHA-256, first 8 hex chars) for cache busting.
-//   5. Write to assets/app.<hash>.js.
-//   6. Rewrite index.html in place:
-//        - replace the babel block with <script src="/assets/app.<hash>.js" defer></script>
-//        - remove the @babel/standalone <script> tag
-//        - remove the matching <link rel="preload" ... babel.min.js ...>
+//   1. Read src/app.jsx (the JSX source of truth — edit this file, not index.html).
+//   2. Transform JSX → JS (IIFE, ES2020, minified, React.createElement).
+//   3. Hash the output (SHA-256, first 8 hex) for cache busting.
+//   4. Write assets/app.<hash>.js (and prune any older app.*.js bundle).
+//   5. Rewrite index.html so the `<!-- APP_BUNDLE -->` marker, or any previous
+//      `<script src="/assets/app.*.js" defer></script>` tag, points to the new bundle.
 //
-// Idempotent: running twice on a freshly built file produces no change (the babel
-// script is already gone). Old hashed bundles in /assets/ are pruned automatically.
+// Idempotent: re-running produces the same bundle (same hash) if the source is unchanged.
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -22,23 +18,15 @@ import { transform } from 'esbuild';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HTML_PATH = join(__dirname, 'index.html');
+const SRC_PATH = join(__dirname, 'src', 'app.jsx');
 const ASSETS_DIR = join(__dirname, 'assets');
 
-const html = readFileSync(HTML_PATH, 'utf8');
-
-// Match <script type="text/babel" ...>...</script>. Non-greedy body, DOTALL via [\s\S].
-const babelBlockRe = /<script\s+type=["']text\/babel["'][^>]*>([\s\S]*?)<\/script>/i;
-const babelBlockMatch = html.match(babelBlockRe);
-if (!babelBlockMatch) {
-  // Already built (or no Babel block present). Nothing to do.
-  // Still ensure the assets dir + .gitkeep exist for git tracking.
-  if (!existsSync(ASSETS_DIR)) mkdirSync(ASSETS_DIR, { recursive: true });
-  const keep = join(ASSETS_DIR, '.gitkeep');
-  if (!existsSync(keep)) writeFileSync(keep, '');
-  console.log('No <script type="text/babel"> block found — nothing to compile.');
-  process.exit(0);
+if (!existsSync(SRC_PATH)) {
+  console.error(`Missing source: ${SRC_PATH}`);
+  process.exit(1);
 }
-const jsxSource = babelBlockMatch[1];
+
+const jsxSource = readFileSync(SRC_PATH, 'utf8');
 
 const result = await transform(jsxSource, {
   loader: 'jsx',
@@ -55,11 +43,9 @@ const hash = createHash('sha256').update(result.code).digest('hex').slice(0, 8);
 const outName = `app.${hash}.js`;
 
 if (!existsSync(ASSETS_DIR)) mkdirSync(ASSETS_DIR, { recursive: true });
-// Ensure .gitkeep exists so the empty dir survives in git.
 const keep = join(ASSETS_DIR, '.gitkeep');
 if (!existsSync(keep)) writeFileSync(keep, '');
 
-// Prune any previous app.*.js (keeps the assets dir tidy across rebuilds).
 for (const f of readdirSync(ASSETS_DIR)) {
   if (/^app\.[a-f0-9]{8}\.js$/.test(f) && f !== outName) {
     unlinkSync(join(ASSETS_DIR, f));
@@ -68,24 +54,23 @@ for (const f of readdirSync(ASSETS_DIR)) {
 
 writeFileSync(join(ASSETS_DIR, outName), result.code);
 
-let newHtml = html.replace(
-  babelBlockRe,
-  `<script src="/assets/${outName}" defer></script>`,
-);
+let html = readFileSync(HTML_PATH, 'utf8');
 
-// Strip the @babel/standalone <script> tag (any attributes, any spacing).
-newHtml = newHtml.replace(
-  /<script\b[^>]*src=["'][^"']*@babel\/standalone[^"']*["'][^>]*>\s*<\/script>\s*\n?/gi,
-  '',
-);
+// Replace any previous app.*.js reference (incl. `<!-- APP_BUNDLE -->` marker) with the new one.
+const tagRe = /<script\b[^>]*src=["']\/assets\/app\.[a-f0-9]{8}\.js["'][^>]*>\s*<\/script>/i;
+const markerRe = /<!--\s*APP_BUNDLE\s*-->/i;
+const newTag = `<script src="/assets/${outName}" defer></script>`;
 
-// Strip the matching <link rel="preload" ... babel.min.js> if present.
-newHtml = newHtml.replace(
-  /<link\b[^>]*rel=["']preload["'][^>]*href=["'][^"']*@babel\/standalone[^"']*["'][^>]*>\s*\n?/gi,
-  '',
-);
+if (tagRe.test(html)) {
+  html = html.replace(tagRe, newTag);
+} else if (markerRe.test(html)) {
+  html = html.replace(markerRe, newTag);
+} else {
+  console.error('No <script src="/assets/app.*.js"> tag or <!-- APP_BUNDLE --> marker found in index.html.');
+  process.exit(1);
+}
 
-writeFileSync(HTML_PATH, newHtml);
+writeFileSync(HTML_PATH, html);
 
 console.log(`✓ Built /assets/${outName} (${result.code.length.toLocaleString()} bytes minified)`);
-console.log(`✓ index.html: babel runtime stripped, replaced with <script src="/assets/${outName}" defer>`);
+console.log(`✓ index.html → ${newTag}`);

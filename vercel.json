@@ -11,7 +11,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://esm.sh https://cdn.esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://obgtzkmugkuoqzjjsvqs.supabase.co https://*.supabase.co; connect-src 'self' https://obgtzkmugkuoqzjjsvqs.supabase.co https://*.supabase.co wss://obgtzkmugkuoqzjjsvqs.supabase.co; frame-src 'self' https://legit-app3.vercel.app https://*.vercel.app; frame-ancestors 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://esm.sh https://cdn.esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://obgtzkmugkuoqzjjsvqs.supabase.co https://*.supabase.co; connect-src 'self' https://obgtzkmugkuoqzjjsvqs.supabase.co https://*.supabase.co wss://obgtzkmugkuoqzjjsvqs.supabase.co; frame-src 'self' https://legit-app3.vercel.app https://*.vercel.app; frame-ancestors 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
         },
         {
           "key": "X-Content-Type-Options",
